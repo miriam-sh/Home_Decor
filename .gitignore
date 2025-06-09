@@ -1,0 +1,58 @@
+# ===== C# / .NET Ignore =====
+# Build results
+bin/
+obj/
+**/bin/
+**/obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+
+# Rider IDE
+.idea/
+
+# Publish folder
+publish/
+
+# Logs
+*.log
+
+# Secrets
+secrets.json
+
+# ===== Ignore wwwroot inside HomeDecorBackend/api =====
+HomeDecorBackend/api/wwwroot/**
+
+# ===== Angular / Node.js =====
+# Node modules
+HomeDecorFrontend/node_modules/
+
+# Angular build output
+HomeDecorFrontend/dist/
+HomeDecorFrontend/out-tsc/
+
+# Environment files
+HomeDecorFrontend/src/environments/environment*.ts
+
+# IDE files
+HomeDecorFrontend/.vscode/
+HomeDecorFrontend/.idea/
+
+# Logs
+*.log
+
+# Misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
