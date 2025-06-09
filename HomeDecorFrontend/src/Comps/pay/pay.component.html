@@ -1,0 +1,171 @@
+<div class="checkout-wrapper">
+
+  <h3 class="title">תשלום</h3>
+  <hr class="titleLine" />
+
+  <div class="quick-pay-section">
+    <div class="quick-pay-box">
+      <label class="quick-pay-title">תשלום מהיר</label>
+      <button class="gpay-button">
+        <img src="https://www.gstatic.com/instantbuy/svg/dark_gpay.svg" alt="G Pay" />
+      </button>
+    </div>
+  </div>
+
+  <div class="divider-wrapper">
+    <div class="divider-line"></div>
+    <div class="divider-label">או</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <form [formGroup]="theForm" (ngSubmit)="save(order)" class="details-form">
+    <h4 class="form-section-title">פרטי הלקוח/ה</h4>
+    <div class="form-group">
+      <label for="email">מייל *</label>
+      <input type="email" name="email" formControlName="email" required>
+      @if (Gemail.invalid && (Gemail.dirty || Gemail.touched)) {
+      <div class="error-message">
+        <span class="error-icon">ⓘ</span>
+        @if (Gemail.errors!['required']) {
+        שדה חובה
+        } @else if (Gemail.errors!['invalidEmail']) {
+        כתובת מייל לא תקינה
+        } @else {
+        שגיאה
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-row">
+      <div class="form-group half-width">
+        <label for="firstName">שם פרטי *</label>
+        <input type="text" name="firstName" formControlName="firstName" required>
+        @if (GfirstName.invalid && (GfirstName.dirty || GfirstName.touched)) {
+        <div class="error-message">
+          <span class="error-icon">ⓘ</span>
+          @if (GfirstName.errors!['required']) {
+          שדה חובה
+          } @else {
+          שגיאה
+          }
+        </div>
+        }
+      </div>
+      <div class="form-group half-width">
+        <label for="lastName">שם משפחה *</label>
+        <input type="text" name="lastName" formControlName="lastName" required>
+        @if (GlastName.invalid && (GlastName.dirty || GlastName.touched)) {
+        <div class="error-message">
+          <span class="error-icon">ⓘ</span>
+          @if (GlastName.errors!['required']) {
+          שדה חובה
+          } @else {
+          שגיאה
+          }
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">טלפון *</label>
+      <input type="tel" name="phone" formControlName="phone" required>
+      @if (Gphone.invalid && (Gphone.dirty || Gphone.touched)) {
+      <div class="error-message">
+        <span class="error-icon">ⓘ</span>
+        @if (Gphone.errors!['required']) {
+        שדה חובה
+        } @else if (Gphone.errors!['invalidPhone']) {
+        טלפון לא תקין
+        } @else {
+        שגיאה
+        }
+      </div>
+      }
+    </div>
+
+    <h4 class="form-section-title">פרטי כרטיס האשראי</h4>
+    <div class="form-group">
+      <label for="creditCardNumber">מספר כרטיס אשראי *</label>
+      <input type="text" name="creditCardNumber" formControlName="creditCardNumber" required maxlength="16">
+      @if (GcreditCardNumber.invalid && (GcreditCardNumber.dirty || GcreditCardNumber.touched)) {
+      <div class="error-message">
+        <span class="error-icon">ⓘ</span>
+        @if (GcreditCardNumber.errors!['required']) {
+        שדה חובה
+        } @else if (GcreditCardNumber.errors!['shortCreditCardNumber']) {
+        מספר כרטיס האשראי מכיל פחות מ-16 ספרות
+        } @else if (GcreditCardNumber.errors!['invalidCreditCardNumber']) {
+        מספר כרטיס אשראי מכיל ספרות בלבד
+        } @else {
+        שגיאה
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="tz">תעודת זהות של בעל הכרטיס *</label>
+      <input type="text" name="tz" formControlName="tz" required maxlength="9">
+      @if (Gtz.invalid && (Gtz.dirty || Gtz.touched)) {
+      <div class="error-message">
+        <span class="error-icon">ⓘ</span>
+        @if (Gtz.errors!['required']) {
+        שדה חובה
+        } @else if (Gtz.errors!['shortTz']) {
+        מספר תעודת הזהות מכיל פחות מ-9 ספרות
+        } @else if (Gtz.errors!['notDigits']) {
+        מספר תעודת זהות מכיל ספרות בלבד
+        }@else if (Gtz.errors!['invalidTz']) {
+        מספר תעודת זהות שגוי
+        } @else {
+        שגיאה
+        }
+      </div>
+      }
+
+    </div>
+    <div class="form-row">
+      <div class="form-group half-width">
+        <label for="cvv">cvv *</label>
+        <input type="text" name="cvv" formControlName="cvv" required maxlength="3">
+        @if (Gcvv.invalid && (Gcvv.dirty || Gcvv.touched)) {
+        <div class="error-message">
+          <span class="error-icon">ⓘ</span>
+          @if (Gcvv.errors!['required']) {
+          שדה חובה
+          } @else if (Gcvv.errors!['shortCvv']) {
+          מספר הקוד הסודי מכיל פחות מ-3 ספרות
+          } @else if (Gcvv.errors!['invalidCvv']) {
+          קוד סודי מכיל ספרות בלבד
+          } @else {
+          שגיאה
+          }
+        </div>
+        }
+      </div>
+      <div class="form-group half-width">
+        <label for="creditCartValidationDate">תוקף כרטיס האשראי *</label>
+        <input type="date" name="creditCartValidationDate" formControlName="creditCartValidationDate" required>
+        @if (GcreditCartValidationDate.invalid && (GcreditCartValidationDate.dirty ||
+        GcreditCartValidationDate.touched)) {
+        <div class="error-message">
+          <span class="error-icon">ⓘ</span>
+          @if (GcreditCartValidationDate.errors!['required']) {
+          שדה חובה
+          }@else if (GcreditCartValidationDate.errors!['dateInPast']) {
+          אין להזין תאריך פג תוקף
+          } @else {
+          שגיאה
+          }
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="submit-wrapper">
+      <button type="submit" class="submit-button" #order>להזמנה</button>
+    </div>
+  </form>
+</div>
